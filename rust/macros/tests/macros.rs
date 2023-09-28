@@ -2,21 +2,21 @@ use macros::hashmap;
 use std::collections::HashMap;
 
 #[test]
-fn test_empty() {
+fn empty() {
     let expected: HashMap<u32, u32> = HashMap::new();
     let computed: HashMap<u32, u32> = hashmap!();
     assert_eq!(computed, expected);
 }
 
 #[test]
-fn test_single() {
+fn single() {
     let mut expected = HashMap::new();
     expected.insert(1, "one");
     assert_eq!(hashmap!(1 => "one"), expected);
 }
 
 #[test]
-fn test_no_trailing_comma() {
+fn no_trailing_comma() {
     let mut expected = HashMap::new();
     expected.insert(1, "one");
     expected.insert(2, "two");
@@ -24,7 +24,7 @@ fn test_no_trailing_comma() {
 }
 
 #[test]
-fn test_trailing_comma() {
+fn trailing_comma() {
     let mut expected = HashMap::new();
     expected.insert('h', 89);
     expected.insert('a', 1);
@@ -42,7 +42,7 @@ fn test_trailing_comma() {
 }
 
 #[test]
-fn test_nested() {
+fn nested() {
     let mut expected = HashMap::new();
     expected.insert("non-empty", {
         let mut subhashmap = HashMap::new();
@@ -76,7 +76,7 @@ mod test {
     }
 
     #[test]
-    fn test_macro_out_of_scope() {
+    fn macro_out_of_scope() {
         let _empty: ::std::collections::HashMap<(), ()> = macros::hashmap!();
         let _without_comma = macros::hashmap!(23=> 623, 34 => 21);
         let _with_trailing = macros::hashmap!(23 => 623, 34 => 21,);
@@ -84,7 +84,7 @@ mod test {
 }
 
 #[test]
-fn test_type_override() {
+fn type_override() {
     // The macro should always use std::collections::HashMap and ignore crate::std::collections::HashMap
     mod std {
         pub mod collections {
@@ -110,52 +110,52 @@ fn test_type_override() {
 }
 
 #[test]
-fn test_compile_fails_comma_sep() {
+fn compile_fails_comma_sep() {
     simple_trybuild::compile_fail("comma-sep.rs");
 }
 
 #[test]
-fn test_compile_fails_double_commas() {
+fn compile_fails_double_commas() {
     simple_trybuild::compile_fail("double-commas.rs");
 }
 
 #[test]
-fn test_compile_fails_only_comma() {
+fn compile_fails_only_comma() {
     simple_trybuild::compile_fail("only-comma.rs");
 }
 
 #[test]
-fn test_compile_fails_single_argument() {
+fn compile_fails_single_argument() {
     simple_trybuild::compile_fail("single-argument.rs");
 }
 
 #[test]
-fn test_compile_fails_triple_arguments() {
+fn compile_fails_triple_arguments() {
     simple_trybuild::compile_fail("triple-arguments.rs");
 }
 
 #[test]
-fn test_compile_fails_only_arrow() {
+fn compile_fails_only_arrow() {
     simple_trybuild::compile_fail("only-arrow.rs");
 }
 
 #[test]
-fn test_compile_fails_two_arrows() {
+fn compile_fails_two_arrows() {
     simple_trybuild::compile_fail("two-arrows.rs");
 }
 
 #[test]
-fn test_compile_fails_leading_comma() {
+fn compile_fails_leading_comma() {
     simple_trybuild::compile_fail("leading-comma.rs");
 }
 
 #[test]
-fn test_compile_fails_no_comma() {
+fn compile_fails_no_comma() {
     simple_trybuild::compile_fail("no-comma.rs");
 }
 
 #[test]
-fn test_compile_fails_missing_argument() {
+fn compile_fails_missing_argument() {
     simple_trybuild::compile_fail("missing-argument.rs");
 }
 

@@ -15,3 +15,20 @@ macro_rules! hashmap {
         }
     };
 }
+
+#[macro_export]
+macro_rules! myName {
+    ($name:expr) => {
+        "my name is ".to_string() + $name
+    };
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_myname() {
+        assert_eq!(myName!("rust"), "my name is rust");
+    }
+}

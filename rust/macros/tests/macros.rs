@@ -68,7 +68,6 @@ fn nested() {
 }
 
 mod test {
-    use crate::HashMap;
     use macros::hashmap;
 
     #[test]

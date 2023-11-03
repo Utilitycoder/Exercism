@@ -1,7 +1,7 @@
 pub fn square_of_sum(n: u32) -> u32 {
     match n {
         0 => 0,
-        _ => (1..=n).fold(0, |acc, x| acc + x).pow(2),
+        _ => (1..=n).sum::<u32>().pow(2),
     }
 }
 

@@ -9,7 +9,7 @@ pub enum Classification {
 
 pub fn classify(num: u64) -> Option<Classification> {
     if num == 0 {
-        return None;
+        None
     } else {
         // Match the numbers between 1 and num, filter out the ones that are can divide num
         // and sum them up. Then compare the sum to num and return the appropriate Classification

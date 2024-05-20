@@ -1,17 +1,24 @@
 #[macro_export]
 macro_rules! hashmap {
     () => {
-        {
-        ::std::collections::HashMap::new()
-        }
+        {::std::collections::HashMap::new()}
     };
-    ($($key:expr => $value:expr),+ $(,)?) => {
-        {   
+    ($($key:expr ; $value:expr), + $(,)?) => {
+        {
             let mut map = ::std::collections::HashMap::new();
             $(
-             map.insert($key, $value);
+                map.insert($key, $value);
             )*
             map
         }
     };
-}
+    ($($key:expr => $value:expr), + $(,)?) => {
+        {
+            let mut map = ::std::collections::HashMap::new();
+            $(
+                map.insert($key, $value);
+            )*
+            map
+        }
+    }
+} 

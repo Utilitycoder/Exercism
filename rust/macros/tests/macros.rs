@@ -13,7 +13,7 @@ fn empty() {
 fn single() {
     let mut expected = HashMap::new();
     expected.insert(1, "one");
-    assert_eq!(hashmap!(1 => "one"), expected);
+    assert_eq!(hashmap!(1; "one"), expected);
 }
 
 #[test]
